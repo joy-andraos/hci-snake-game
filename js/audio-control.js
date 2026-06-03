@@ -27,10 +27,8 @@ const AudioControl = (() => {
 
                 const scores = result.scores;
                 const labels = recognizer.wordLabels();
-                let highestScoreIdx = 0;
-                let maxScore = 0;
-
-                highestScoreIdx = Array.from(scores).indexOf(Math.max(...scores));
+                const maxScore = Math.max(...scores);
+                const highestScoreIdx = Array.from(scores).indexOf(maxScore);
 
                 const command = labels[highestScoreIdx].toUpperCase();
                 
