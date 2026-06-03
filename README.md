@@ -48,8 +48,8 @@ Control the snake with your whole body.
 |-----------|----------|
 | 🙆 Up | Raise both arms up wide (jumping jack) |
 | 🏋️ Down | Squat down until your body is out of the frame |
-| 🫲 Left | Extend your right arm sideways |
-| 🫱 Right | Extend your left arm sideways |
+| 🫲 Left | Extend your left arm sideways |
+| 🫱 Right | Extend your right arm sideways |
 
 > 💡 Stand back from the camera so your full body is visible. Set speed to SLOW for best accuracy.
 
