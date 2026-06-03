@@ -2,7 +2,7 @@
 
 The classic Snake game that you can control with your hands, voice, or body.
 
-🔗 **[Click here to try it](#)**
+🔗 **[Click here to try it](https://joy-andraos.github.io/hci-snake-game/)**
 
 ## What is HCI?
 
