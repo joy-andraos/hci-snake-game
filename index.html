@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HCI Snake Game</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.17.0/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/hand-pose-detection@2.0.1/dist/hand-pose-detection.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1646424915/hands.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/speech-commands@0.4.0/dist/speech-commands.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection@2.1.3/dist/pose-detection.js"></script>
+</head>
+
+<body>
+
+<div id="game-container">
+    <div id="header-bar">
+        <span id="game-title">HCI SNAKE GAME</span>
+        <div id="header-right">
+            <select id="mode-select">
+                <option value="keyboard">KEYBOARD</option>
+                <option value="gesture">GESTURES</option>
+                <option value="sound">VOICE</option>
+                <option value="pose">POSE</option>
+            </select>
+            <button id="help-btn" aria-label="Open instructions">?</button>
+        </div>
+    </div>
+
+    <div id="score-row">
+        <div class="score-block">
+            <span class="score-block-label">SCORE</span>
+            <span id="score-display">0</span>
+        </div>
+        <div class="score-block">
+            <span class="score-block-label">BEST</span>
+            <span id="best-display">0</span>
+        </div>
+        <div id="speed-control">
+            <span class="speed-label">SPEED</span>
+            <button class="speed-btn" data-speed="330">SLOW</button>
+            <button class="speed-btn active" data-speed="170">NORMAL</button>
+            <button class="speed-btn" data-speed="80">FAST</button>
+        </div>
+    </div>
+
+    <div id="game-row">
+        <div id="screen-wrapper">
+            <canvas id="game-canvas" width="400" height="400"></canvas>
+
+            <div id="start-screen">
+                <button id="start-btn">PRESS ENTER TO PLAY</button>
+            </div>
+
+            <div id="game-over-screen" class="hidden">
+                <p id="new-best-label" class="hidden">NEW HIGH SCORE !</p>
+                <p id="game-over-label">GAME OVER</p>
+                <p id="game-over-score"></p>
+                <p id="press-restart">PRESS ENTER TO RESTART</p>
+            </div>
+
+            <div id="countdown" class="hidden">3</div>
+
+            <div id="loading-overlay" class="hidden">
+                <div class="spinner"></div>
+                <p id="loading-text">Loading...</p>
+            </div>
+        </div>
+
+        <div id="side-panel">
+            <div class="panel-heading">COMMANDS</div>
+            <div id="command-log"></div>
+
+            <div id="detected-sign"></div>
+            <div id="webcam-wrap">
+                <video id="webcam" autoplay playsinline muted></video>
+                <div id="camera-inactive">
+                    <span>CAMERA<br>INACTIVE</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="help-modal" class="hidden" role="dialog" aria-modal="true" aria-labelledby="help-title">
+    <div id="help-box">
+        <button id="help-close" aria-label="Close instructions">✕</button>
+        <h2 id="help-title">HOW TO PLAY</h2>
+
+        <div class="help-section">
+            <h3><i class="fa-solid fa-keyboard"></i>  KEYBOARD</h3>
+            <p>Use arrow keys to move. Press ENTER to start / restart.</p>
+        </div>
+
+        <div class="help-section">
+            <h3><i class="fa-regular fa-hand-point-up"></i>  GESTURES</h3>
+            <p>Point your index finger in the direction you want to move.</p>
+            <ul>
+                <li><i class="fa-regular fa-hand-point-up"></i> Finger pointing up</li>
+                <li><i class="fa-regular fa-hand-point-down"></i> Finger pointing down</li>
+                <li><i class="fa-regular fa-hand-point-left"></i> Finger pointing left</li>
+                <li><i class="fa-regular fa-hand-point-right"></i> Finger pointing right</li>
+            </ul>
+            <p class="tip"><i class="fa-regular fa-lightbulb"></i>  Make sure only your hand is visible to the camera in good lighting. Set game speed to SLOW for best accuracy.</p>
+        </div>
+
+        <div class="help-section">
+            <h3><i class="fa-solid fa-microphone"></i>  VOICE</h3>
+            <p>Say UP, DOWN, LEFT, or RIGHT clearly.</p>
+            <p class="tip"><i class="fa-regular fa-lightbulb"></i>  Speak clearly and set game speed to SLOW for best accuracy.</p>
+        </div>
+
+        <div class="help-section">
+            <h3><i class="fa-solid fa-person-rays"></i>  POSE</h3>
+            <p>Move your whole body to steer the snake.</p>
+            <ul>
+                <li><i class="fa-solid fa-person-arrow-up-from-line"></i> Raise both arms up wide</li>
+                <li><i class="fa-solid fa-person-arrow-down-to-line"></i> Lower body outside the frame (squat)</li>
+                <li><i class="fa-solid fa-square"></i><i class="fa-solid fa-square"></i><i class="fa-solid fa-hand fa-rotate-90"></i> Extend right arm sideways</li>
+                <li><i class="fa-solid fa-hand fa-rotate-270"></i><i class="fa-solid fa-square"></i><i class="fa-solid fa-square"></i> Extend left arm sideways</li>
+            </ul>
+            <p class="tip"><i class="fa-regular fa-lightbulb"></i> Stand back from the camera and set game speed to SLOW.</p>
+        </div>
+    </div>
+</div>
+
+<script src="js/snake.js"></script>
+<script src="js/main.js"></script>
+<script src="js/gesture-control.js"></script>
+<script src="js/audio-control.js"></script>
+<script src="js/pose-control.js"></script>
+
+</body>
+</html>
