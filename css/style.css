@@ -528,3 +528,127 @@ body {
 }
 
 #help-close:hover { color: #fff; }
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+    body {
+        align-items: flex-start;
+        overflow-y: auto;
+        background-image: url('../images/mobile-bg.png');
+    }
+
+    #game-container {
+        width: 100vw;
+        height: auto;
+        border-radius: 0;
+        border: none;
+    }
+
+    /* Header */
+
+    #header-bar {
+        padding: 8px 12px;
+    }
+
+    #game-title {
+        font-size: 0.4rem;
+    }
+
+    #mode-select {
+        font-size: 0.35rem;
+        padding: 4px 22px 4px 6px;
+    }
+
+    #help-btn {
+        width: 22px;
+        height: 22px;
+        font-size: 0.55rem;
+        line-height: 22px;
+    }
+
+    /* Score + speed */
+
+    #score-row {
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 8px 12px;
+    }
+
+    #score-display,
+    #best-display {
+        font-size: 1.2rem;
+    }
+
+    #speed-control {
+        width: 100%;
+        justify-content: flex-end;
+        margin-left: 0;
+    }
+
+    /* Game layout — vertical stack */
+
+    #game-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 0;
+    }
+
+    /* Commands log above canvas */
+
+    #side-panel {
+        width: 100%;
+        order: -1; /* moves above canvas */
+        flex-direction: row;
+        align-items: center;
+        border-bottom: 1px solid #141414;
+    }
+
+    .panel-heading { display: none; }
+
+    #command-log {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        min-height: unset;
+        padding: 6px 10px;
+        gap: 6px;
+        flex: 1;
+    }
+
+    #detected-sign {
+        padding: 4px 10px;
+        white-space: nowrap;
+        min-height: unset;
+    }
+
+    /* Canvas fills width */
+
+    #screen-wrapper {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+    }
+
+    /* Webcam below canvas */
+
+    #webcam-wrap {
+        width: 100%;
+        padding: 10px 12px;
+        border-top: 1px solid #141414;
+    }
+
+    #webcam,
+    #camera-inactive {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Modal */
+
+    #help-box {
+        padding: 20px 16px;
+        max-height: 90vh;
+    }
+}
