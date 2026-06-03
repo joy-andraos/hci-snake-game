@@ -100,6 +100,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     startBtn.addEventListener('click', resetAndLaunch);
+    // Touch tap to start / restart (mobile)
+    startScreen.addEventListener('touchend', e => {
+        e.preventDefault();
+        resetAndLaunch();
+    });
+
+    gameOverScreen.addEventListener('touchend', e => {
+        e.preventDefault();
+        resetAndLaunch();
+    });
 
     // Mode selector
     modeSelect.addEventListener('change', async (e) => {
@@ -164,4 +174,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, { passive: true });
     })();
+
+    document.addEventListener('touchmove', e => e.preventDefault(), { passive: false });
 });
