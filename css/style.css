@@ -703,22 +703,6 @@ body {
         overflow-y: scroll;
     }
 
-    #help-box::-webkit-scrollbar {
-        width: 0.5rem;
-    }
-
-    #help-box::-webkit-scrollbar-track {
-        background: #0d0d0d;
-        border-radius: 0 7px 7px 0;
-        margin: 2px 0;
-    }
-
-    #help-box::-webkit-scrollbar-thumb {
-        background-color: #4CAF50;
-        border-radius: 0.4rem;
-        border: 2px solid #0d0d0d;
-    }
-
     #pose-unavailable-mobile {
         display: flex;
         flex-direction: column;

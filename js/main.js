@@ -183,29 +183,23 @@ document.addEventListener('DOMContentLoaded', () => {
     initModal('help-modal', 'help-btn', 'help-close');
 
     // Touch swipe controls (mobile)
-    (function initTouchControls() {
-        let touchStartX = 0;
-        let touchStartY = 0;
-        const minSwipeDistance = 30;
+    function initModal(modalId, openBtnId, closeBtnId) {
+        const modal   = document.getElementById(modalId);
+        const helpBox = document.getElementById('help-box');
 
-        window.addEventListener('touchstart', e => {
-            touchStartX = e.touches[0].clientX;
-            touchStartY = e.touches[0].clientY;
-        }, { passive: true });
+        function openModal()  {
+            modal.classList.remove('hidden');
+            bodyScrollLock.disableBodyScroll(helpBox);
+        }
+        function closeModal() {
+            modal.classList.add('hidden');
+            bodyScrollLock.enableBodyScroll(helpBox);
+        }
 
-        window.addEventListener('touchend', e => {
-            const dx = e.changedTouches[0].clientX - touchStartX;
-            const dy = e.changedTouches[0].clientY - touchStartY;
-
-            if (Math.max(Math.abs(dx), Math.abs(dy)) < minSwipeDistance) return;
-
-            if (Math.abs(dx) > Math.abs(dy)) {
-                SnakeGame.changeDirection(dx > 0 ? 'RIGHT' : 'LEFT');
-            } else {
-                SnakeGame.changeDirection(dy > 0 ? 'DOWN' : 'UP');
-            }
-        }, { passive: true });
-    })();
+        document.getElementById(openBtnId).addEventListener('click', openModal);
+        document.getElementById(closeBtnId).addEventListener('click', closeModal);
+        modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+    }
 
     document.addEventListener('touchmove', e => e.preventDefault(), { passive: false });
 });
