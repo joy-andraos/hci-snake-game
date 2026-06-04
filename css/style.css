@@ -727,9 +727,9 @@ body {
         flex: 1;
         min-height: 60vh;
         font-family: 'Press Start 2P', monospace;
-        background: #4CAF50;
+        background: #000;
         font-size: 0.55rem;
-        color: #000;
+        color: #4CAF50;
         letter-spacing: 0.1em;
         text-align: center;
         line-height: 2.4;
@@ -738,7 +738,6 @@ body {
 
     #pose-unavailable-mobile span {
         display: inline-block;
-        border: 3px solid #000;
         padding: 1.8rem 1.4rem;
         line-height: 2.8;
     }
