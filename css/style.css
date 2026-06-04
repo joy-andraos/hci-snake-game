@@ -529,6 +529,10 @@ body {
 
 #help-close:hover { color: #fff; }
 
+#pose-unavailable-mobile {
+    display: none;
+}
+
 /* Mobile */
 
 @media (max-width: 700px) {
@@ -721,10 +725,9 @@ body {
         align-items: center;
         justify-content: center;
         flex: 1;
-        background: #000;
         font-family: 'Press Start 2P', monospace;
         font-size: 0.55rem;
-        color: #4CAF50;
+        color: #000;
         letter-spacing: 0.1em;
         text-align: center;
         line-height: 2.4;
