@@ -459,8 +459,6 @@ body {
     overflow-y: auto;
     font-family: 'Press Start 2P', monospace;
     color: #ccc;
-    /* scrollbar-width: thin;
-    scrollbar-color: #4CAF50 #0d0d0d; custom scrollbar */
 }
 
 #help-box::-webkit-scrollbar {
@@ -488,7 +486,7 @@ body {
 }
 
 #help-box h3 {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     font-family: monospace;
     color: #4CAF50;
     margin: 0 0 10px;
@@ -502,7 +500,7 @@ body {
 
 .help-section p,
 .help-section li {
-    font-size: 0.55rem;
+    font-size: 0.70rem;
     font-family: monospace;
     line-height: 2.2;
     margin: 4px 0;
@@ -512,7 +510,7 @@ body {
 
 .help-section ul { padding-left: 16px; margin: 6px 0; }
 
-.help-section .tip { font-size: 0.55rem; color: #658265; margin-top: 8px; }
+.help-section .tip { font-size: 0.6rem; color: #72a322; margin-top: 8px; }
 
 #help-close {
     position: absolute;
