@@ -726,6 +726,7 @@ body {
         justify-content: center;
         flex: 1;
         font-family: 'Press Start 2P', monospace;
+        background: #4CAF50;
         font-size: 0.55rem;
         color: #000;
         letter-spacing: 0.1em;

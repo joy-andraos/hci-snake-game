@@ -18,6 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const gameOverScreen = document.getElementById('game-over-screen');
     const speedBtns      = document.querySelectorAll('.speed-btn');
     const bestDisplay    = document.getElementById('best-display');
+    const poseMsg = document.getElementById('pose-unavailable-mobile');
+
+    poseMsg.style.display = 'none';
 
     let currentMode = 'keyboard';
     const signEl    = document.getElementById('detected-sign');
