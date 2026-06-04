@@ -459,6 +459,8 @@ body {
     overflow-y: auto;
     font-family: 'Press Start 2P', monospace;
     color: #ccc;
+    scrollbar-width: thin;
+    scrollbar-color: #4CAF50 #0d0d0d;
 }
 
 #help-box::-webkit-scrollbar {
@@ -677,5 +679,21 @@ body {
     #help-box {
         padding: 20px 16px;
         max-height: 90vh;
+    }
+
+    #help-box::-webkit-scrollbar {
+        width: 0.5rem;
+    }
+
+    #help-box::-webkit-scrollbar-track {
+        background: #0d0d0d;
+        border-radius: 0 7px 7px 0;
+        margin: 2px 0;
+    }
+
+    #help-box::-webkit-scrollbar-thumb {
+        background-color: #4CAF50;
+        border-radius: 0.4rem;
+        border: 2px solid #0d0d0d;
     }
 }
