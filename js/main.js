@@ -121,9 +121,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
         currentMode = e.target.value;
 
-        // Reset panel state
         signEl.textContent = '';
         camOff.classList.add('hidden');
+
+        const isMobile = window.innerWidth <= 700;
+        const screenWrapper = document.getElementById('screen-wrapper');
+        const sidePanel = document.getElementById('side-panel');
+        const poseMsg = document.getElementById('pose-unavailable-mobile');
+
+        // Reset pose-mobile layout
+        poseMsg.style.display = 'none';
+        screenWrapper.style.display = '';
+        sidePanel.style.display = '';
+
+        if (currentMode === 'pose' && isMobile) {
+            // Hide game area and side panel, show message
+            screenWrapper.style.display = 'none';
+            sidePanel.style.display = 'none';
+            poseMsg.style.display = 'flex';
+            return;
+        }
 
         if (currentMode === 'keyboard') {
             signEl.textContent = 'KEYBOARD MODE ON';
