@@ -657,12 +657,12 @@ body {
 
     /* Webcam below canvas */
 
-    #webcam-wrap {
-        width: calc(100% - 24px);
-        margin: 10px 12px;
+     #webcam-wrap {
+        width: 100%;
+        margin: 0;
+        padding: 10px 12px 14px;
         border-top: 1px solid #141414;
-        padding: 0;
-        flex-shrink: 0;
+        box-sizing: border-box;
     }
 
     #webcam,
@@ -671,6 +671,24 @@ body {
         aspect-ratio: 1 / 1;
         height: auto;
         object-fit: cover;
+    }
+
+    #camera-inactive {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 0;
+    }
+
+    #camera-inactive span {
+        text-align: center;
+        line-height: 2;
+    }
+
+    /* Scrollbar in help modal on iOS */
+    #help-box {
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
     }
 
     /* Modal */
