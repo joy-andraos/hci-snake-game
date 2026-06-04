@@ -44,17 +44,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    const highScoreAudio = new Audio('audios/new-high-score-sound.mp3');
+    highScoreAudio.preload = 'auto';
+
+    function unlockAudio() {
+        highScoreAudio.play().then(() => {
+            highScoreAudio.pause();
+            highScoreAudio.currentTime = 0;
+        }).catch(() => {});
+    }
+    document.addEventListener('touchstart', unlockAudio, { once: true });
+    document.addEventListener('click', unlockAudio, { once: true });
+
     // Best score hook (called by snake.js on game over)
-   window.onGameOver = function(finalScore) {
+    window.onGameOver = function(finalScore) {
         const isNewBest = finalScore > bestScore;
         if (isNewBest) {
             bestScore = finalScore;
             bestDisplay.textContent = bestScore;
             localStorage.setItem(LS_KEY, bestScore);
-            const audio = new Audio('audios/new-high-score-sound.mp3');
-            audio.play().catch(err => console.warn('Audio playback failed:', err));
+            // Reuse the pre-unlocked audio instance
+            highScoreAudio.currentTime = 0;
+            highScoreAudio.play().catch(err => console.warn('Audio playback failed:', err));
         }
-        // Show "NEW HIGH SCORE!" above game over if applicable
         const newBestEl = document.getElementById('new-best-label');
         if (newBestEl) newBestEl.classList.toggle('hidden', !isNewBest);
     };
