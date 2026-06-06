@@ -48,9 +48,11 @@ document.addEventListener('DOMContentLoaded', () => {
     highScoreAudio.preload = 'auto';
 
     function unlockAudio() {
+        highScoreAudio.volume = 0;
         highScoreAudio.play().then(() => {
             highScoreAudio.pause();
             highScoreAudio.currentTime = 0;
+            highScoreAudio.volume = 1;
         }).catch(() => {});
     }
     document.addEventListener('touchstart', unlockAudio, { once: true });
