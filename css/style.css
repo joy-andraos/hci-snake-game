@@ -495,8 +495,12 @@ body {
     letter-spacing: 0.08em;
 }
 
+.help-section:first-of-type {
+    border-top: none;
+}
+
 .help-section {
-    border-top: 1px solid #1a1a1a;
+    border-top: 1px solid #5b5959;
     padding: 14px 0;
 }
 
