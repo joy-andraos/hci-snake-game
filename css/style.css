@@ -703,8 +703,9 @@ body {
 
     #help-box {
         padding: 20px 16px;
-        max-height: 90vh;
+        max-height: 80vh;
         overflow-y: scroll;
+        margin: 2rem auto;
     }
 
     #pose-unavailable-mobile {
