@@ -175,19 +175,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Instructions modal
     function initModal(modalId, openBtnId, closeBtnId) {
-        const modal = document.getElementById(modalId);
-        document.getElementById(openBtnId).addEventListener('click', () => modal.classList.remove('hidden'));
-        document.getElementById(closeBtnId).addEventListener('click', () => modal.classList.add('hidden'));
-        modal.addEventListener('click', e => { if (e.target === modal) modal.classList.add('hidden'); });
-    }
-    initModal('help-modal', 'help-btn', 'help-close');
-
-    // Touch swipe controls (mobile)
-    function initModal(modalId, openBtnId, closeBtnId) {
         const modal   = document.getElementById(modalId);
         const helpBox = document.getElementById('help-box');
 
-        function openModal()  {
+        function openModal() {
             modal.classList.remove('hidden');
             bodyScrollLock.disableBodyScroll(helpBox);
         }
@@ -200,6 +191,31 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById(closeBtnId).addEventListener('click', closeModal);
         modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
     }
+    initModal('help-modal', 'help-btn', 'help-close');
 
+    // Prevent page scroll on touch
     document.addEventListener('touchmove', e => e.preventDefault(), { passive: false });
+
+    // Touch swipe controls (mobile)
+    (function initTouchControls() {
+        let touchStartX = 0;
+        let touchStartY = 0;
+        const minSwipeDistance = 30;
+
+        window.addEventListener('touchstart', e => {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+        }, { passive: true });
+
+        window.addEventListener('touchend', e => {
+            const dx = e.changedTouches[0].clientX - touchStartX;
+            const dy = e.changedTouches[0].clientY - touchStartY;
+            if (Math.max(Math.abs(dx), Math.abs(dy)) < minSwipeDistance) return;
+            if (Math.abs(dx) > Math.abs(dy)) {
+                SnakeGame.changeDirection(dx > 0 ? 'RIGHT' : 'LEFT');
+            } else {
+                SnakeGame.changeDirection(dy > 0 ? 'DOWN' : 'UP');
+            }
+        }, { passive: true });
+    })();
 });
