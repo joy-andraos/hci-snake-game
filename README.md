@@ -14,8 +14,6 @@ Many of us spend long hours sitting while working or studying. This project bega
 
 Snake was a natural choice because of its simplicity in controls, which opened the door to several game modes. Throughout development, I got curious to explore the different models available in the browser and ended up adding two modes: hand gestures and voice commands.
 
-The result is both a fun game and a small HCI experiment. It has become one of my favorite ways to take a quick movement break during the workday.
-
 ## Game Modes
 
 ### 1. Keyboard
