@@ -59,7 +59,12 @@ MediaPipe Hands is a graph-based machine learning pipeline trained on hundreds o
 
 Hand landmarks from the official [docs](https://mediapipe.readthedocs.io/en/latest/solutions/hands.html):
 
-<img width="543" height="200" alt="hand_landmarks" src="https://github.com/user-attachments/assets/4371baf7-a680-4d27-b7b3-b59b696ac03f" />
+<table>
+  <tr>
+    <td><img width="450" height="200" alt="hand_landmarks" src="https://github.com/user-attachments/assets/4371baf7-a680-4d27-b7b3-b59b696ac03f" /></td>
+    <td><img width="450" height="200" alt="hand_crops" src="https://github.com/user-attachments/assets/f22cdabd-ba50-43d7-9fdc-024834bdce0f" /></td>
+  </tr>
+</table>
 
 ---
 
