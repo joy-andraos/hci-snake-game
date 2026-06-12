@@ -46,16 +46,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const highScoreAudio = new Audio('audios/new-high-score-sound.mp3');
     highScoreAudio.preload = 'auto';
-    let audioUnlocked = false;
 
     function unlockAudio() {
-        if (audioUnlocked) return;
-        const silentUnlock = new Audio('audios/new-high-score-sound.mp3');
-        silentUnlock.volume = 0;
-        silentUnlock.play().then(() => {
-            silentUnlock.pause();
-            audioUnlocked = true;
-        }).catch(() => {});
+        // Silent blank MP3 to wake the audio context without firing highScoreAudio
+        const silent = new Audio("data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4LjI5LjEwMAAAAAAAAAAAAAAA//tQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAABIADAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDA//////////////////////////////////////////////////////////////////8AAAAATGF2YzU4LjU0AAAAAAAAAAAAAAAAJAAAAAAAAAAAASDs90hvAAAAAAAAAAAAAAAAAAAA//tQZAAP8AAAaQAAAAgAAA0gAAABAAABpAAAACAAADSAAAAETEFNRTMuMTAwVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV");
+        silent.play().catch(() => {});
     }
     document.addEventListener('touchstart', unlockAudio, { once: true });
     document.addEventListener('click', unlockAudio, { once: true });
