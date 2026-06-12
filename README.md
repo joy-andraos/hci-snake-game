@@ -82,7 +82,7 @@ MediaPipe BlazePose has two stages: a lightweight pose detector first to locate 
 
 Pose landmarks from the official [docs](https://developers.google.com/mediapipe/solutions/vision/pose_landmarker):
 
-<img width="300" height="350" alt="pose_landmarks_index" src="https://github.com/user-attachments/assets/dbcc7063-be30-4676-9787-23846827759c" />
+<img width="200" height="250" alt="pose_landmarks_index" src="https://github.com/user-attachments/assets/dbcc7063-be30-4676-9787-23846827759c" />
 
 ---
 All processing happens locally in your browser. No data is ever sent to a server and nothing is stored.
