@@ -53,18 +53,34 @@ Control the snake with your whole body.
 
 ## How It Works
 
-- **Gestures**: MediaPipe Hands detects 21 hand landmarks in each video frame. 
-The game reads the position of your index finger tip relative to its base knuckle 
-to classify direction.
+### Gestures
 
-- **Voice**: TensorFlow.js runs a pre-trained audio classification model locally 
-in your browser. It listens for the words UP, DOWN, LEFT and RIGHT in real time.
+MediaPipe Hands is a graph-based machine learning pipeline trained on hundreds of thousands of annotated hand images to detect 21 3D landmark coordinates from a single RGB frame. With these coordinates, the game is able to read the position of your index finger tip relative to its base knuckle and to classify the direction UP, DOWN, LEFT or RIGHT accordingly.
 
-- **Pose**: MediaPipe BlazePose detects 33 body landmarks. The game compares 
-wrist and shoulder positions to classify which direction you're moving.
+Hand landmarks from the official [docs](https://mediapipe.readthedocs.io/en/latest/solutions/hands.html):
 
-> All processing happens locally in your browser. No data is ever sent to a server
-and nothing is stored.
+<img width="543" height="200" alt="hand_landmarks" src="https://github.com/user-attachments/assets/4371baf7-a680-4d27-b7b3-b59b696ac03f" />
+
+---
+
+### Voice
+
+TensorFlow.js runs a pre-trained audio classification model locally in your browser. The model uses a convolutional neural network trained on the Speech Commands dataset (short one second audio clips) and converts sound into a spectrogram image to classify it (like in the picture below). In this game, it listens for the words UP, DOWN, LEFT and RIGHT in real time.
+
+<img width="300" height="300" alt="audio-recognition" src="https://github.com/user-attachments/assets/9d896c9b-a968-413d-8373-5b8a5a43e437" />
+
+---
+
+### Pose 
+
+MediaPipe BlazePose has two stages: a lightweight pose detector first to locate the person in the frame, then a separate regression model to predict all 33 body landmark coordinates with high precision. Using those coordinates, the game compares wrist and shoulder positions to classify which direction you're moving. 
+
+Pose landmarks from the official [docs](https://developers.google.com/mediapipe/solutions/vision/pose_landmarker):
+
+<img width="300" height="350" alt="pose_landmarks_index" src="https://github.com/user-attachments/assets/dbcc7063-be30-4676-9787-23846827759c" />
+
+---
+All processing happens locally in your browser. No data is ever sent to a server and nothing is stored.
 
 ## Built With
 
