@@ -46,13 +46,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const highScoreAudio = new Audio('audios/new-high-score-sound.mp3');
     highScoreAudio.preload = 'auto';
+    let audioUnlocked = false;
 
     function unlockAudio() {
-        highScoreAudio.volume = 0;
-        highScoreAudio.play().then(() => {
-            highScoreAudio.pause();
-            highScoreAudio.currentTime = 0;
-            highScoreAudio.volume = 1;
+        if (audioUnlocked) return;
+        const silentUnlock = new Audio('audios/new-high-score-sound.mp3');
+        silentUnlock.volume = 0;
+        silentUnlock.play().then(() => {
+            silentUnlock.pause();
+            audioUnlocked = true;
         }).catch(() => {});
     }
     document.addEventListener('touchstart', unlockAudio, { once: true });
