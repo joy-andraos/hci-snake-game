@@ -641,6 +641,19 @@ body {
         font-size: 0.4rem;
     }
 
+    #scores {
+        color: #4CAF50;
+        background: #111;
+        border: 1px solid #2d7525;
+        cursor: pointer;
+        transition: background 0.15s, border-color 0.15s;
+    }
+
+    #scores:hover {
+        background: #0d1f0d;
+        border-color: #4CAF50;
+    }
+
     #mode-select {
         font-size: 0.35rem;
         padding: 4px 22px 4px 6px;
