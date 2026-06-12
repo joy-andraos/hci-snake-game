@@ -80,14 +80,14 @@ body {
 }
 
 #mode-select:hover,
-#mode-select:focus { border-color: #3a5a3a; color: #878484; }
+#mode-select:focus { border-color: #4CAF50; color: white; }
 
 #help-btn {
     font-family: 'Press Start 2P', monospace;
     font-size: 0.75rem;
     background: #111;
     color: #4CAF50;
-    border: 1px solid #2a4a2a;
+    border: 1px solid #2d7525;
     border-radius: 50%;
     width: 28px;
     height: 28px;
@@ -532,6 +532,83 @@ body {
 }
 
 #help-close:hover { color: #fff; }
+
+/* Scores modal */
+
+#scores {
+    color: #4CAF50;
+    background: #111;
+}
+
+#scores:hover {
+    background: #0d1f0d;
+    border-color: #4CAF50;
+    color: #4CAF50;
+}
+
+#scores-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.88);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+#scores-modal.hidden { display: none; }
+
+#scores-box {
+    position: relative;
+    background: #0d0d0d;
+    border: 1px solid #2a5a2a;
+    border-radius: 8px;
+    padding: 28px 30px;
+    max-width: 26rem;
+    width: 90%;
+    font-family: 'Press Start 2P', monospace;
+    color: #ccc;
+}
+
+#scores-box h2 {
+    font-size: 0.8rem;
+    color: #4CAF50;
+    margin: 0 0 20px;
+    text-align: center;
+    letter-spacing: 0.12em;
+}
+
+#scores-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.9rem;
+    background: none;
+    border: none;
+    color: #444;
+    cursor: pointer;
+    transition: color 0.15s;
+}
+
+#scores-close:hover { color: #fff; }
+
+.scores-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: #888;
+    padding: 4px 0;
+    letter-spacing: 0.05em;
+}
+
+.scores-row span:last-child {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.65rem;
+    color: #4CAF50;
+}
 
 #pose-unavailable-mobile {
     display: none;

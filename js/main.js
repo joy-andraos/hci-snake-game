@@ -30,9 +30,18 @@ document.addEventListener('DOMContentLoaded', () => {
     signEl.textContent = 'KEYBOARD MODE ON';
     camOff.classList.remove('hidden');
 
-    // Best score (persisted)
-    const LS_KEY  = 'hci_snake_best';
-    let bestScore = parseInt(localStorage.getItem(LS_KEY) || '0', 10);
+    // Best score per mode (persisted)
+    const LS_PREFIX = 'hci_snake_best_';
+    const modes = ['keyboard', 'gesture', 'sound', 'pose'];
+
+    function getBest(mode) {
+        return parseInt(localStorage.getItem(LS_PREFIX + mode) || '0', 10);
+    }
+    function setBest(mode, score) {
+        localStorage.setItem(LS_PREFIX + mode, score);
+    }
+
+    let bestScore = getBest(currentMode);
     bestDisplay.textContent = bestScore;
 
     // Speed buttons
@@ -61,8 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isNewBest) {
             bestScore = finalScore;
             bestDisplay.textContent = bestScore;
-            localStorage.setItem(LS_KEY, bestScore);
-            // Reuse the pre-unlocked audio instance
+            setBest(currentMode, bestScore);
+            document.getElementById('best-' + currentMode).textContent = bestScore;
             highScoreAudio.currentTime = 0;
             highScoreAudio.play().catch(err => console.warn('Audio playback failed:', err));
         }
@@ -134,6 +143,8 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('command-log').innerHTML = '';
 
         currentMode = e.target.value;
+        bestScore = getBest(currentMode);
+        bestDisplay.textContent = bestScore;
 
         signEl.textContent = '';
         camOff.classList.add('hidden');
@@ -191,6 +202,20 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
     }
     initModal('help-modal', 'help-btn', 'help-close');
+
+    const scoresModal = document.getElementById('scores-modal');
+    document.getElementById('scores').addEventListener('click', () => {
+        modes.forEach(m => {
+            document.getElementById('best-' + m).textContent = getBest(m);
+        });
+        scoresModal.classList.remove('hidden');
+    });
+    document.getElementById('scores-close').addEventListener('click', () => {
+        scoresModal.classList.add('hidden');
+    });
+    scoresModal.addEventListener('click', e => {
+        if (e.target === scoresModal) scoresModal.classList.add('hidden');
+    });
 
     // Prevent page scroll on touch
     document.addEventListener('touchmove', e => e.preventDefault(), { passive: false });

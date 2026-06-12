@@ -22,6 +22,7 @@
     <div id="header-bar">
         <span id="game-title">HCI SNAKE GAME</span>
         <div id="header-right">
+            <button id="scores"><i class="fa-solid fa-ranking-star"></i></i></button>
             <select id="mode-select">
                 <option value="keyboard">KEYBOARD</option>
                 <option value="gesture">GESTURES</option>
@@ -135,6 +136,38 @@
             </ul>
             <br>
             <p class="tip"><i class="fa-regular fa-lightbulb"></i> Stand back from the camera and in good lighting. Set game speed to SLOW for best accuracy.</p>
+        </div>
+    </div>
+</div>
+
+<div id="scores-modal" class="hidden" role="dialog" aria-modal="true" aria-labelledby="scores-title">
+    <div id="scores-box">
+        <button id="scores-close" aria-label="Close scores">✕</button>
+        <h2 id="scores-title">HIGH SCORES</h2>
+
+        <div class="help-section">
+            <div class="scores-row">
+                <span><i class="fa-solid fa-keyboard"></i>  KEYBOARD</span>
+                <span id="best-keyboard">0</span>
+            </div>
+        </div>
+        <div class="help-section">
+            <div class="scores-row">
+                <span><i class="fa-regular fa-hand-point-up"></i>  GESTURES</span>
+                <span id="best-gesture">0</span>
+            </div>
+        </div>
+        <div class="help-section">
+            <div class="scores-row">
+                <span><i class="fa-solid fa-microphone"></i>  VOICE</span>
+                <span id="best-sound">0</span>
+            </div>
+        </div>
+        <div class="help-section">
+            <div class="scores-row">
+                <span><i class="fa-solid fa-person-rays"></i>  POSE</span>
+                <span id="best-pose">0</span>
+            </div>
         </div>
     </div>
 </div>
