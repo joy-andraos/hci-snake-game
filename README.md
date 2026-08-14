@@ -4,6 +4,8 @@ The classic Snake game that you can control with your hands, voice, or body.
 
 🔗 **[Click here to try it](https://joy-andraos.github.io/hci-snake-game/)**
 
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/joy-andraos/hci-snake-game)
+
 ## What is HCI?
 
 Human-Computer Interaction (HCI) explores how people interact with technology in order to design intuitive digital systems. In that spirit, this project experiments with hand gestures, voice commands and full-body movement as alternative ways to control a game. All of which run entirely in the browser, with no installation required.
